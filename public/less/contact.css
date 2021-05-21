@@ -1,0 +1,116 @@
+body .contact-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 6vw 0 6vw;
+  flex-wrap: wrap;
+}
+body .contact-wrapper .text-block {
+  margin-right: 6vw;
+}
+body .contact-wrapper .text-block .block {
+  font-family: 'Open Sans', sans-serif;
+}
+body .contact-wrapper .text-block .block span {
+  display: block;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 41px;
+}
+body .contact-wrapper .text-block .block pre {
+  margin: 20px 0 70px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  line-height: 41px;
+}
+body .contact-wrapper .text-block .block .social-mob {
+  margin-top: 20px;
+  display: none;
+}
+body .contact-wrapper .address .title {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 30px;
+}
+body .contact-wrapper .address .addres {
+  display: inline-block;
+  font-size: 30px;
+}
+body .contact-wrapper .address #map {
+  margin-top: 30px;
+  height: 642px;
+  width: 50vw;
+  margin-bottom: 70px;
+}
+@media (max-width: 1360px) {
+  body .contact-wrapper .text-block .block span {
+    font-size: 26px;
+    line-height: 35px;
+  }
+  body .contact-wrapper .text-block .block pre {
+    font-size: 18px;
+    line-height: 24.5px;
+  }
+  body .contact-wrapper .address .title {
+    font-size: 26px;
+  }
+  body .contact-wrapper .address .addres {
+    font-size: 26px;
+  }
+  body .contact-wrapper .address #map {
+    height: 478px;
+  }
+}
+@media (max-width: 835px) {
+  body .contact-wrapper .text-block {
+    display: flex;
+    margin-right: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+  body .contact-wrapper .text-block .block #social-media {
+    display: none;
+  }
+  body .contact-wrapper .text-block .block .social-mob {
+    display: block;
+  }
+  body .contact-wrapper .text-block .block .social-mob .container {
+    display: block;
+  }
+  body .contact-wrapper .text-block .block .social-mob .container img {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+  }
+  body .contact-wrapper .text-block .block .social-mob .container span {
+    display: inline-block;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 24.5px;
+  }
+  body .contact-wrapper .address {
+    width: 100%;
+  }
+  body .contact-wrapper .address .title {
+    font-size: 26px;
+  }
+  body .contact-wrapper .address .addres {
+    font-size: 26px;
+  }
+  body .contact-wrapper .address #map {
+    height: 478px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  body .contact-wrapper .text-block {
+    flex-direction: column;
+  }
+  body .contact-wrapper .text-block .block .social-mob {
+    margin-bottom: 70px;
+  }
+  body .contact-wrapper #map {
+    height: 322px;
+  }
+}
+/*# sourceMappingURL=contact.css.map */

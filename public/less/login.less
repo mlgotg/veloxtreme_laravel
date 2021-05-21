@@ -1,0 +1,155 @@
+@darkblue: #283044;
+@blue: #78A1BB;
+@lightblue: #EBF5EE;
+@font1: 'Open Sans', sans-serif;
+@font-for-price: 'Fira Sans', sans-serif;
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  .modal-content {
+    background-color: @lightblue;
+    border: 1px solid @blue;
+    box-sizing: border-box;
+    width: 30%;
+    height: 390px;
+    h2{
+      font-weight: normal;
+      margin-left: 12%;
+      margin-top: 0;
+    }
+    .login-body{
+      display: flex;
+      flex-direction: column;
+      padding: 0 12%;
+      .submit-section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px 0;
+        button[type="submit"]{
+          border: 0;
+          border-radius: 0;
+          height: 34px;
+          background: @blue;
+          color: @darkblue;
+          width: 50%;
+          cursor: pointer;
+        }
+        span{
+          a{
+            font-size: 14px;
+            color: @darkblue;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .login-footer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px 12%;
+      .remember-block{
+        label{
+          font-size: 14px;
+        }
+      }
+      a{
+        font-size: 14px;
+        color: @darkblue;
+        cursor: pointer;
+      }
+    }
+  }
+  .signup{
+    height: 680px;
+  }
+}
+
+.login-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  label {
+    color: @darkblue;
+    opacity: 0.66;
+    font-size: 14px;
+  }
+  input{
+    height: 30px;
+    background: @lightblue;
+    border: 1px solid @blue;
+    border-radius: 0;
+    padding-left: 8px;
+    &:active, &:focus{
+      outline: none;
+    }
+
+  }
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+  color: @darkblue;
+  font-size: 48px;
+  div{
+    cursor:pointer;
+    padding: 0 16px;
+  }
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+@media(max-width: 1280px) {
+  .modal{
+    .modal-content{
+      width: 50%;
+    }
+  }
+}
+@media(max-width: 840px) {
+  .modal{
+    .modal-content{
+      width: 70%;
+    }
+  }
+}
+@media(max-width: 580px) {
+  .modal{
+    .modal-content{
+      width: 100%;
+      height: 100%;
+      h2{
+        margin-left: 6%;
+      }
+      .login-body {
+        padding: 0 6%;
+      }
+      .login-footer{
+        padding: 0 6%;
+      }
+    }
+  }
+}

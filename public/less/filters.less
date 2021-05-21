@@ -1,0 +1,107 @@
+@darkblue: #283044;
+@blue: #78A1BB;
+@lightblue: #EBF5EE;
+@font1: 'Open Sans', sans-serif;
+@font-for-price: 'Fira Sans', sans-serif;
+.filter-section{
+  display: flex;
+  flex-direction: column;
+  vertical-align: top;
+  width: 350px;
+  .store-header-filter{
+    .filter-label{
+      background: @darkblue;
+      padding: 16px;
+      width: 318px;
+      img{
+        display: none;
+        cursor: pointer;
+      }
+      h1{
+        font-weight: normal;
+        margin: 0;
+        line-height: 36px;
+        color: @lightblue;
+      }
+    }
+  }
+  .filters {
+    margin-right: -1px;
+    .collapsible {
+      background-color: @lightblue;
+      cursor: pointer;
+      padding: 16px 8px;
+      width: 100%;
+      border-top: 0;
+      border-right: 1px solid @blue;
+      border-bottom: 1px solid @blue;
+      border-left: 0;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+
+      .arrow {
+        transform: rotate(270deg);
+        margin: 0 10px;
+      }
+    }
+
+    .active {
+      border-bottom: none;
+      .arrow{
+        transform: rotate(0deg);
+      }
+    }
+
+    .content {
+      padding: 0 18px 0 48px;
+      display: block;
+      overflow: hidden;
+      border-top: 0;
+      border-right: 1px solid @blue;
+      border-bottom: 1px solid @blue;
+      border-left: 0;
+      .price-slider{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-right: 25px;
+        input[type="text"]{
+          width: 100px;
+          height: 30px;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          background: @lightblue;
+          border: 1px solid @blue;
+          border-radius: 0;
+          padding-left: 8px;
+          &:active, &:focus{
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+.checkbox-filter {
+  padding: 8px 4px;
+  input[type="checkbox"]{
+    border: 1px solid @blue;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    background: @lightblue;
+    appearance: none;
+    cursor: pointer;
+  }
+  input[type="checkbox"]:checked{
+    background-color: @darkblue;
+    background-image: url("../image/icons/check-mark.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  label {
+    display: inline-block;
+    cursor: pointer;
+  }
+}

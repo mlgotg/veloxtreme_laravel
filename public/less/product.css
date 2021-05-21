@@ -1,0 +1,323 @@
+body h1 {
+  font-weight: normal;
+  margin: 20px 20px 20px 6%;
+}
+body .product-info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 6% 40px 6%;
+}
+body .product-info .gallery-char {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body .product-info .gallery-char .gallery {
+  display: flex;
+  flex-direction: column;
+  width: 63%;
+}
+body .product-info .gallery-char .gallery .main-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+body .product-info .gallery-char .gallery .main-image button {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  border: 0;
+  background: #78A1BB;
+  height: 80px;
+  width: 80px;
+  opacity: 0;
+  z-index: 1;
+}
+body .product-info .gallery-char .gallery .main-image .left-arrow-button {
+  margin-right: -80px;
+  border-radius: 0 10px 10px 0;
+  padding-left: 20px;
+}
+body .product-info .gallery-char .gallery .main-image .left-arrow-button img {
+  transform: rotate(90deg);
+  width: 60%;
+  height: 60%;
+}
+body .product-info .gallery-char .gallery .main-image .right-arrow-button {
+  margin-left: -80px;
+  border-radius: 10px 0 0 10px;
+  padding-left: 28px;
+}
+body .product-info .gallery-char .gallery .main-image .right-arrow-button img {
+  transform: rotate(270deg);
+  width: 65%;
+  height: 65%;
+}
+body .product-info .gallery-char .gallery .main-image img {
+  width: 100%;
+}
+body .product-info .gallery-char .gallery .main-image:hover button {
+  opacity: 1;
+}
+body .product-info .gallery-char .gallery .image-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1% 0 40px 0;
+}
+body .product-info .gallery-char .gallery .image-row img {
+  width: 24%;
+  overflow: hidden;
+  cursor: pointer;
+}
+body .product-info .gallery-char .gallery .image-row img:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+body .product-info .gallery-char .product-desc {
+  display: block;
+  margin-bottom: 40px;
+}
+body .product-info .gallery-char .product-desc button {
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 16px;
+  width: 100%;
+  background: #EBF5EE;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #78A1BB;
+}
+body .product-info .gallery-char .product-desc button img {
+  transform: rotate(270deg);
+  margin-right: 10px;
+}
+body .product-info .gallery-char .product-desc .active img {
+  transform: rotate(0deg);
+}
+body .product-info .gallery-char .product-desc .product-desc-body {
+  border: 1px solid #78A1BB;
+  padding: 16px;
+  margin-top: -1px;
+}
+body .product-info .gallery-char .characteristics {
+  display: flex;
+  flex-direction: column;
+  width: 34%;
+}
+body .product-info .gallery-char .characteristics .buy-section {
+  margin-bottom: 40px;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #78A1BB;
+  padding: 16px;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy h1 {
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy button {
+  display: flex;
+  flex-direction: row;
+  appearance: none;
+  background: #C4392F;
+  border-radius: 4px;
+  border: 0;
+  padding: 4px;
+  color: #EBF5EE;
+  cursor: pointer;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy button p {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 4px;
+  font-family: 'Open Sans', sans-serif;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy button img {
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+}
+body .product-info .gallery-char .characteristics .buy-section .buy button:hover {
+  background: #e8372a;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char {
+  display: flex;
+  flex-direction: row;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: 1px solid #78A1BB;
+  padding: 16px;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color h2 {
+  font-weight: normal;
+  margin: 0 0 10px 0;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors {
+  display: flex;
+  flex-direction: row;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons {
+  display: flex;
+  flex-direction: row;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons .radiobutton-filter input[type="radio"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin: 0 10px 0 0;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons .radiobutton-filter input[type="radio"]:checked {
+  border: 4px solid #78A1BB;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons .radiobutton-filter #grey {
+  background: grey;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons .radiobutton-filter #white {
+  background: white;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-color .colors .radiobuttons .radiobutton-filter #black {
+  background: black;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-diameter {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #78A1BB;
+  width: 50%;
+  padding: 16px;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-diameter h2 {
+  font-weight: normal;
+  margin: 0 0 10px 0;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-diameter .radiobuttons {
+  display: flex;
+  flex-direction: row;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-diameter .radiobuttons .radiobutton-filter input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #78A1BB;
+}
+body .product-info .gallery-char .characteristics .buy-section .choice-char .choice-diameter .radiobuttons .radiobutton-filter input[type="radio"]:checked {
+  background: #283044;
+  border: 0;
+}
+body .product-info .gallery-char .characteristics .chars-section {
+  margin-bottom: 40px;
+}
+body .product-info .gallery-char .characteristics .chars-section button {
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 16px;
+  width: 100%;
+  background: #EBF5EE;
+  text-align: left;
+  cursor: pointer;
+}
+body .product-info .gallery-char .characteristics .chars-section button img {
+  transform: rotate(270deg);
+  margin-right: 10px;
+}
+body .product-info .gallery-char .characteristics .chars-section .active img {
+  transform: rotate(0deg);
+}
+body .product-info .gallery-char .characteristics .chars-section .chars-header {
+  border: 1px solid #78A1BB;
+}
+body .product-info .gallery-char .characteristics .chars-section .chars-header h2 {
+  margin: 16px;
+  font-weight: normal;
+}
+body .product-info .gallery-char .characteristics .chars-section .chars-body {
+  border: 1px solid #78A1BB;
+  padding: 16px;
+  margin-top: -1px;
+}
+body .product-info .gallery-char .characteristics .chars-section .chars-body p {
+  margin: 0;
+  line-height: 28px;
+}
+body .product-info .gallery-char .characteristics .review-section button {
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 16px;
+  width: 100%;
+  background: #EBF5EE;
+  text-align: left;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  border: 1px solid #78A1BB;
+  margin-bottom: 20px;
+}
+body .product-info .gallery-char .characteristics .review-section button img {
+  transform: rotate(270deg);
+  margin-right: 10px;
+}
+body .product-info .gallery-char .characteristics .review-section .active img {
+  transform: rotate(0deg);
+}
+body .product-info .gallery-char .characteristics .review-section .review {
+  margin-bottom: 20px;
+}
+body .product-info .gallery-char .characteristics .review-section .review .review-header {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #78A1BB;
+  padding: 16px;
+}
+body .product-info .gallery-char .characteristics .review-section .review .review-header img {
+  margin-right: 10px;
+}
+body .product-info .gallery-char .characteristics .review-section .review .review-header h2 {
+  font-weight: normal;
+  margin: 4px 0;
+}
+body .product-info .gallery-char .characteristics .review-section .review .review-body {
+  border: 1px solid #78A1BB;
+  padding: 16px;
+  margin-top: -1px;
+}
+@media (max-width: 980px) {
+  body .product-info .gallery-char {
+    flex-direction: column;
+  }
+  body .product-info .gallery-char .gallery {
+    width: 100%;
+  }
+  body .product-info .gallery-char .gallery .main-image button {
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+  }
+  body .product-info .gallery-char .gallery .main-image .left-arrow-button {
+    margin-right: -60px;
+  }
+  body .product-info .gallery-char .gallery .main-image .right-arrow-button {
+    margin-left: -60px;
+    padding-left: 20px;
+  }
+  body .product-info .gallery-char .characteristics {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=product.css.map */

@@ -1,0 +1,237 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+body .body-wrap {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+body .body-wrap .block-1 {
+  width: 30vw;
+  min-width: 480px;
+  position: relative;
+  margin: 70px 0 70px 6vw;
+  display: flex;
+  flex-direction: column;
+}
+body .body-wrap .block-1 .checkout-title {
+  font-weight: bold;
+  font-size: 30px;
+}
+body .body-wrap .block-1 .row2 {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+body .body-wrap .block-1 .row2 .your-contacts {
+  font-size: 30px;
+}
+body .body-wrap .block-1 .row2 .login-button {
+  font-size: 22px;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+body .body-wrap .block-1 .login-body {
+  display: flex;
+  flex-direction: column;
+}
+body .body-wrap .block-1 .login-body .login-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+body .body-wrap .block-1 .login-body .login-info label {
+  color: #283044;
+  opacity: 0.66;
+  font-size: 14px;
+}
+body .body-wrap .block-1 .login-body .login-info input {
+  height: 30px;
+  background: #EBF5EE;
+  border: 1px solid #78A1BB;
+  border-radius: 0;
+  padding-left: 8px;
+}
+body .body-wrap .block-1 .login-body .login-info input:active,
+body .body-wrap .block-1 .login-body .login-info input:focus {
+  outline: none;
+}
+body .body-wrap .block-1 .login-body label {
+  font-size: 20px;
+  line-height: 27px;
+}
+body .body-wrap .block-1 .login-body .radiobuttons .radiobutton-filter input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #78A1BB;
+}
+body .body-wrap .block-1 .login-body .radiobuttons .radiobutton-filter input[type="radio"]:checked {
+  background: #283044;
+  border: 0;
+}
+body .body-wrap .block-1 .login-body .variant-of-delivery {
+  margin-top: 50px;
+}
+body .body-wrap .block-1 .login-body .variant-of-delivery .delivery-title {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+body .body-wrap .block-1 .login-body .variant-of-pay {
+  margin-top: 50px;
+}
+body .body-wrap .block-1 .login-body .variant-of-pay .pay-title {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+@media (max-width: 1920px) {
+  body .items {
+    width: 41vw;
+    margin: 110px 6vw 70px 6vw;
+    min-width: 620px;
+  }
+  body .items .block2 {
+    height: 175px;
+    min-width: 620px;
+  }
+  body .items .block2 .insides {
+    position: relative;
+    padding: 15px;
+    justify-content: flex-start;
+  }
+  body .items .block2 .insides .row1 .name {
+    font-size: 20px;
+  }
+  body .items .block2 .insides .row1 .price {
+    position: absolute;
+    bottom: 15px;
+    font-size: 24px;
+    line-height: unset;
+  }
+  body .items .block2 .insides .row2 {
+    margin-top: 10px;
+    position: static;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  body .items .block2 .insides .row3 {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+  }
+  body .items .block2 .insides .row3 span {
+    font-size: 22px;
+  }
+  body .items .block2 .insides .row3 button {
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+  }
+  body .items .block2 .insides .row3 img {
+    height: 30px;
+    width: 30px;
+  }
+  body .items .for-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+  body .items .for-button .checkout {
+    min-width: 320px;
+    width: 50%;
+    font-size: 20px;
+    height: 60px;
+  }
+}
+@media (max-width: 1363px) {
+  body .body-wrap {
+    justify-content: center;
+  }
+  body .body-wrap .block-1 {
+    margin: 70px 6vw 70px 6vw;
+    width: 620px;
+  }
+  body .body-wrap .items {
+    margin: 0 6vw 70px 6vw;
+  }
+}
+@media (max-width: 740px) {
+  body .body-wrap .block-1 {
+    margin: 70px 6vw 70px 6vw;
+    min-width: 450px;
+    width: 450px;
+  }
+  body .body-wrap .block-1 .row2 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  body .body-wrap .block-1 .row2 .your-contacts {
+    font-size: 26px;
+  }
+  body .body-wrap .block-1 .row2 .login-button {
+    font-size: 22px;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+  body .items {
+    min-width: 450px;
+  }
+  body .items .block2 {
+    height: unset;
+    min-width: 315px;
+  }
+  body .items .block2 .insides .row1 .name {
+    font-size: 18px;
+  }
+  body .items .block2 .insides .row2 {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 50px;
+  }
+  body .items .for-button .checkout {
+    min-width: 320px;
+    width: 100%;
+    font-size: 20px;
+    height: 60px;
+  }
+}
+@media (max-width: 470px) {
+  body .body-wrap .block-1 {
+    margin: 30px 6vw 30px 6vw;
+    min-width: 315px;
+  }
+  body .body-wrap .block-1 .checkout-title {
+    font-size: 20px;
+  }
+  body .body-wrap .block-1 .row2 .your-contacts {
+    display: none;
+  }
+  body .body-wrap .block-1 .row2 .login-button {
+    font-size: 16px;
+    text-decoration-line: underline;
+    color: #78A1BB;
+    margin-bottom: 10px;
+  }
+  body .items {
+    margin: 10px 6vw 50px 6vw;
+    min-width: 315px;
+    width: 100%;
+  }
+  body .items .basket {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  body .items .for-button .checkout {
+    min-width: 315px;
+    width: 100%;
+    font-size: 20px;
+    height: 70px;
+  }
+}
+/*# sourceMappingURL=checkout.css.map */
