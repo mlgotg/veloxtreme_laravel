@@ -35,4 +35,7 @@ Route::get('/product', function () {
 Route::get('/store', function () {
     return view('store');
 });
-
+Route::get('/store', '\App\Http\Controllers\ProductController@getProducts');
+Route::post('/submit', 'App\Http\Controllers\CheckoutController@write');
+Route::post('/', 'App\Http\Controllers\LoginController@write')->name('login');
+Route::post('/', 'App\Http\Controllers\SignController@write')->name('sign');

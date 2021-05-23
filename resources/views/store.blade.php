@@ -115,7 +115,23 @@
                 </div>
             </div>
             <div class="store-section-items">
-                <div class="store-item" id="1">
+                @foreach($products as $product)
+                    <div class="store-item">
+                        <a href="/store">
+                            <img src="{{$product->img1}}">
+                            <div class="desc">
+                                <div class="item-desc">
+                                    <span class="model">{{$product->manufacturer}}</span>
+                                    <div class="price-buy">
+                                        <span class="price">{{$product->price}}₴</span>
+                                        <button><img src="image/icons/shopping-basket.svg"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+                <!--<div class="store-item" id="1">
                     <a href="product.html">
                         <img src="image/bikes/bike3.png">
                         <div class="desc">
@@ -198,7 +214,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

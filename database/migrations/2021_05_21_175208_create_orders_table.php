@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('delivery_type');
+            $table->string('delivery_details');
             $table->string('pay_type');
             $table->text('comment');
             $table->timestamps();

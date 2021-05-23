@@ -2,8 +2,14 @@
 @section('title')
     Корзина
 @endsection
+@section('head')
+    <link rel="stylesheet" href="less/checkout.css">
+    <link rel="stylesheet" href="less/login.css">
+    <link rel="stylesheet" href="less/basket.css">
+@endsection
 @section('checkout')
-    <div class="body-wrap">
+    <form action="/submit" method="post">
+        @csrf
         <div class="block-1">
             <span class="checkout-title">Оформлення замовлення</span>
             <div class="row2">
@@ -16,47 +22,47 @@
                     <input type="text" placeholder="Введіть ім'я" name="uname" required>
                 </div>
                 <div class="login-info">
-                    <label for="uname">Прізвище</label>
-                    <input type="text" placeholder="Введіть прізвище" name="uname" required>
+                    <label for="surname">Прізвище</label>
+                    <input type="text" placeholder="Введіть прізвище" name="surname" required>
                 </div>
                 <div class="login-info">
-                    <label for="uname">По-батькові</label>
-                    <input type="text" placeholder="Введіть по-батькові" name="uname" required>
+                    <label for="patronymic">По-батькові</label>
+                    <input type="text" placeholder="Введіть по-батькові" name="patronymic" required>
                 </div>
                 <div class="login-info">
-                    <label for="uname">Номер телефону</label>
-                    <input type="text" placeholder="Введіть номер телефону" name="uname" required>
+                    <label for="number">Номер телефону</label>
+                    <input type="tel" placeholder="Введіть номер телефону" name="number" required>
                 </div>
                 <div class="login-info">
-                    <label for="uname">Email</label>
-                    <input type="text" placeholder="Введіть Email" name="uname" required>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Введіть Email" name="email" required>
                 </div>
                 <div class="login-info">
-                    <label for="uname">Коментар</label>
-                    <input type="text" placeholder="Введіть коментар" name="uname" required>
+                    <label for="comment">Коментар</label>
+                    <input type="text" placeholder="Введіть коментар" name="comment" required>
                 </div>
                 <div class="variant-of-delivery">
                     <span class="delivery-title">Спосіб доставки</span>
                     <div class="radiobuttons">
-                        <input type="radio" id="delivery" name="delivery" style="display: none">
+                        <input type="radio" id="delivery" name="delivery_type" style="display: none">
                         <div class="radiobutton-filter">
-                            <input type="radio" id="by-self" name="delivery">
-                            <label for="delivery">Самовивіз з магазину</label>
+                            <input type="radio" id="by-self" name="delivery_type" value="Самовивіз з магазину">
+                            <label for="delivery_type">Самовивіз з магазину</label>
                         </div>
                         <div class="radiobutton-filter">
-                            <input type="radio" id="courier" name="delivery">
-                            <label for="delivery">Кур’єром</label>
+                            <input type="radio" id="courier" name="delivery_type" value="Кур’єр">
+                            <label for="delivery_type">Кур’єром</label>
                             <div class="login-info">
-                                <label for="uname">Ваша адреса</label>
-                                <input type="text" name="uname" required>
+                                <label for="delivery_details_c">Ваша адреса</label>
+                                <input type="text" name="delivery_details_c">
                             </div>
                         </div>
                         <div class="radiobutton-filter">
-                            <input type="radio" id="nova-poshta" name="delivery">
-                            <label for="delivery">Нова пошта</label>
+                            <input type="radio" id="nova-poshta" name="delivery_type" value="Нова пошта">
+                            <label for="delivery_type">Нова пошта</label>
                             <div class="login-info">
-                                <label for="uname">Номер віділення та місто</label>
-                                <input type="text" name="uname" required>
+                                <label for="delivery_details_np">Номер віділення та місто</label>
+                                <input type="text" name="delivery_details_np">
                             </div>
                         </div>
                     </div>
@@ -64,26 +70,26 @@
                 <div class="variant-of-pay">
                     <span class="pay-title">Спосіб оплати</span>
                     <div class="radiobuttons">
-                        <input type="radio" id="pay" name="pay" style="display: none">
+                        <input type="radio" id="pay" name="pay_type" style="display: none">
                         <div class="radiobutton-filter">
-                            <input type="radio" id="cash" name="pay">
-                            <label for="delivery">Оплата готівкою</label>
+                            <input type="radio" id="cash" name="pay_type" value="Оплата готівкою">
+                            <label for="pay_type">Оплата готівкою</label>
                         </div>
                         <div class="radiobutton-filter">
-                            <input type="radio" id="card-offline" name="pay">
-                            <label for="delivery">Картою Visa/Master card при отримані</label>
+                            <input type="radio" id="card-offline" name="pay_type" value="Картою Visa/Master card при отримані">
+                            <label for="pay_type">Картою Visa/Master card при отримані</label>
                         </div>
                         <div class="radiobutton-filter">
-                            <input type="radio" id="card-online" name="pay">
-                            <label for="delivery">Картою Visa/Master card онлайн</label>
+                            <input type="radio" id="card-online" name="pay_type" value="Картою Visa/Master card онлайн">
+                            <label for="pay_type">Картою Visa/Master card онлайн</label>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="items">
             <span class="basket">Обрані товари</span>
+{{--            @foreach($products as $product)--}}
             <div class="block2">
                 <img src="image/bikes/bike1.png">
                 <div class="insides">
@@ -143,8 +149,8 @@
                 </div>
             </div>
             <div class="for-button">
-                <button class="checkout">Оформити замовлення</button>
+                <button type="submit" class="checkout">Оформити замовлення</button>
             </div>
         </div>
-    </div>
+    </form>
 @endsection
