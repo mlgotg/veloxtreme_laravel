@@ -22,7 +22,7 @@
         <a>Велосипеди</a>
         <a>Запчастини</a>
         <a>Аксесуари</a>
-        <a>Контакти</a>
+        <a href="\contact">Контакти</a>
     </div>
     <div class="icons">
         <img src="image/icons/loupe.svg">
@@ -45,7 +45,7 @@
     <a href="index.html">Велосипеди</a>
     <a href="">Запчастини</a>
     <a href="">Аксесуари</a>
-    <a href="">Контакти</a>
+    <a href="\contact">Контакти</a>
 </div>
 @yield('accessories')
 @yield('main')
