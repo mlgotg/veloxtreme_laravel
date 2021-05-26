@@ -22,6 +22,30 @@
   margin-left: 12%;
   margin-top: 0;
 }
+.modal .modal-content .account {
+  display: flex;
+  flex-direction: column;
+  height: 75%;
+  justify-content: space-between;
+  padding: 12%;
+}
+.modal .modal-content .account .hello {
+  font-weight: bold;
+  font-size: 24px;
+}
+.modal .modal-content .account button {
+  background: #78A1BB;
+  color: #283044;
+  width: 50%;
+  height: 34px;
+  cursor: pointer;
+}
+.modal .modal-content .account button a {
+  font-size: 14px;
+  cursor: pointer;
+  color: #283044;
+  text-decoration: none;
+}
 .modal .modal-content .login-body {
   display: flex;
   flex-direction: column;

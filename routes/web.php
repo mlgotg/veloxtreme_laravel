@@ -19,23 +19,21 @@ Route::get('/', function () {
 Route::get('/accessories', function () {
     return view('accessories');
 });
-Route::get('/basket', function () {
-    return view('basket');
-});
+Route::get('/basket', '\App\Http\Controllers\BasketController@view');
 Route::get('/checkout', function () {
     return view('checkout');
 });
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/product', function () {
-    return view('product');
-});
 
 Route::get('/store', function () {
     return view('store');
 });
+Route::get('/product/{id}', '\App\Http\Controllers\ProductController@showProduct');
 Route::get('/store', '\App\Http\Controllers\ProductController@getProducts');
-Route::post('/submit', 'App\Http\Controllers\CheckoutController@write');
-Route::post('/', 'App\Http\Controllers\LoginController@write')->name('login');
-Route::post('/', 'App\Http\Controllers\SignController@write')->name('sign');
+Route::post('/submit', '\App\Http\Controllers\CheckoutController@write');
+Route::post('/', '\App\Http\Controllers\LoginController@login')->name('login');
+Route::post('/sign', '\App\Http\Controllers\SignController@create')->name('sign');
+Route::get('/logout', '\App\Http\Controllers\SessionsController@destroy');
+

@@ -1,52 +1,47 @@
 @extends("index")
 @section('title')
-    -
+    {{$product->manufacturer}} {{$product->model}}
 @endsection
 @section('head')
-    <link rel="stylesheet" href="less/store.css">
-    <link rel="stylesheet" href="less/filters.css">
-    <link rel="stylesheet" href="less/product.css">
+    <link rel="stylesheet" href="/less/filters.css">
+    <link rel="stylesheet" href="/less/store.css">
+    <link rel="stylesheet" href="/less/product.css">
 @endsection
 @section('product')
-    <h1>Trek Marlin 5 2020</h1>
+    <h1>{{$product->manufacturer}} {{$product->model}}</h1>
     <div class="product-info">
         <div class="gallery-char">
             <div class="gallery">
                 <div class="main-image">
                     <button class="left-arrow-button">
-                        <img src="image/icons/down-arrow.svg">
+                        <img src="/image/icons/down-arrow.svg">
                     </button>
-                    <img src="image/bikes/bike1/5.png" class="gallery-image selected" style="display: block">
-                    <img src="image/bikes/bike1/2.webp" class="gallery-image" style="display: none">
-                    <img src="image/bikes/bike1/3.webp" class="gallery-image" style="display: none">
-                    <img src="image/bikes/bike1/4.jpg" class="gallery-image" style="display: none">
+                    <img src="/{{$product->img1}}" class="gallery-image selected" style="display: block">
+                    <img src="/{{$product->img2}}" class="gallery-image" style="display: none">
+                    <img src="/{{$product->img3}}" class="gallery-image" style="display: none">
+                    <img src="/{{$product->img4}}" class="gallery-image" style="display: none">
                     <button class="right-arrow-button">
-                        <img src="image/icons/down-arrow.svg">
+                        <img src="/image/icons/down-arrow.svg">
                     </button>
                 </div>
                 <div class="image-row">
-                    <img src="image/bikes/bike1/5.png" class="row-item">
-                    <img src="image/bikes/bike1/2.webp" class="row-item">
-                    <img src="image/bikes/bike1/3.webp" class="row-item">
-                    <img src="image/bikes/bike1/4.jpg" class="row-item">
+                    <img src="/{{$product->img1}}" class="row-item">
+                    <img src="/{{$product->img2}}" class="row-item">
+                    <img src="/{{$product->img3}}" class="row-item">
+                    <img src="/{{$product->img4}}" class="row-item">
                 </div>
                 <div class="product-desc">
-                    <button type="button" class="collapsible active product-desc-header"><img class="arrow" src="image/icons/down-arrow.svg">Опис</button>
+                    <button type="button" class="collapsible active product-desc-header"><img class="arrow" src="/image/icons/down-arrow.svg">Опис</button>
                     <div class="content product-desc-body" style="display: block;">
-                        <p>
-                            Це справжній гірський велосипед, який також чудово підходить для щоденних поїздок, поїздок по містечку або просто пересування з А до В на будь-якій поверхні. Менші розміри рами (XXS, XS та S) мають гальмівні важелі з коротким охопленням, що полегшує та зручніше для водіїв з меншими руками гальмувати впевнено.</p>
-
-                        <p>Моделі Marlin у розмірах рами від XXS до S мають вигнуту верхню трубу та нижню висоту стояння, що полегшує гонщикам менших розмірів монтування та демонтаж. Кріплення на стійку та підставку полегшує доступ до аксесуарів, тому ваш гірський велосипед може виступати в ролі міцного пасажирa.</p>
-
-                        <p>Як і кожна модель у родині Марлін, вона забезпечена довічною гарантією Trek.</p>
+                        {{$product->description}}
                     </div>
                 </div>
             </div>
             <div class="characteristics">
                 <div class="buy-section">
                     <div class="buy">
-                        <h1>12999₴</h1>
-                        <button><p>Купити</p><img src="image/icons/shopping-backet.svg"></button>
+                        <h1>{{$product->price}}₴</h1>
+                        <button><p>Купити</p><img src="/image/icons/shopping-backet.svg"></button>
                     </div>
                     <div class="choice-char">
                         <div class="choice-color">
@@ -89,80 +84,56 @@
                     </div>
                 </div>
                 <div class="chars-section">
-                    <button type="button" class="collapsible active chars-header"><img class="arrow" src="image/icons/down-arrow.svg">Характеристики</button>
+                    <button type="button" class="collapsible active chars-header"><img class="arrow" src="/image/icons/down-arrow.svg">Характеристики</button>
                     <div class="content chars-body" style="display: block;">
                         <p>
-                            Тип велосипеду: Гравійний
+                            Тип: {{$product->product_type}}
                         </p>
                         <p>
-                            Матеріал рами: Алюміній
+                            Тип велосипеду: {{$product->type}}
                         </p>
                         <p>
-                            Тип гальм: Дискові гідравлічні
+                            Виробник: {{$product->manufacturer}}
                         </p>
                         <p>
-                            Вилка: SR Suntour XCE 28, хід 100 мм
+                            Модель: {{$product->model}}
                         </p>
                         <p>
-                            Втулки:	Formula DC20 / Formula DC27
+                            Матеріал рами: {{$product->frame}}
                         </p>
                         <p>
-                            Ободи:	Bontrager Connection, 32 отв
+                            Тип гальм: {{$product->brakes}}
                         </p>
                         <p>
-                            Шифтери:	Shimano Altus M315, 7 шв.
+                            Колір: {{$product->color}}
                         </p>
                         <p>
-                            П.перемикач:	Shimano Tourney TY300
-                        </p>
-                        <p>
-                            З.перемикач:	Shimano Tourney TY300
-                        </p>
-                        <p>
-                            Рульова:	1-1/8˝ напівінтегрована
-                        </p>
-                        <p>
-                            Вага: 14.44 кг
-                        </p>
-                        <p>
-                            Касета:	Shimano HG200, 12-32, 7 шв
-                        </p>
-                        <p>
-                            Каретка:	Картриджна, 73 мм
+                            Діаметр коліс: {{$product->diameter}}"
                         </p>
                     </div>
                 </div>
                 <div class="review-section">
-                    <button type="button" class="collapsible active product-desc-header"><img class="arrow" src="image/icons/down-arrow.svg">Відгуки</button>
+                    <button type="button" class="collapsible active product-desc-header"><img class="arrow" src="/image/icons/down-arrow.svg">Відгуки</button>
                     <div class="content product-desc-body" style="display: block;">
-                        <div class="review">
-                            <div class="review-header">
-                                <img src="image/icons/account-blue.svg">
-                                <h2>Перун Павло</h2>
+                        @foreach($reviews as $r)
+                            <div class="review">
+                                <div class="review-header">
+                                    <img src="/image/icons/account-blue.svg">
+                                    <h2>Перун Павло</h2>
+                                </div>
+                                <div class="review-body">
+                                    <p>
+                                        {{$r->review}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="review-body">
-                                <p>
-                                    Тип велосипеду: Гравійний
-                                </p>
-                            </div>
-                        </div>
-                        <div class="review">
-                            <div class="review-header">
-                                <img src="image/icons/account-blue.svg">
-                                <h2>Перун Павло</h2>
-                            </div>
-                            <div class="review-body">
-                                <p>
-                                    Тип велосипеду: Гравійний
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="./script/collapsible.js"></script>
+    <script src="/script/collapsible.js"></script>
     <script>
         var slideIndex = 0
         var i;

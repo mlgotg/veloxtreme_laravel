@@ -8,12 +8,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function write(Request $request){
+    public function login(Request $request){
+//        $auth = Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]);
+//        //auth()->login($user);
+        if (auth()->attempt(request(['email', 'password'])) == false) {
+            return back()->withErrors([
+                'message' => 'The email or password is incorrect, please try again'
+            ]);
+        }
         return view('main');
     }
-
 }

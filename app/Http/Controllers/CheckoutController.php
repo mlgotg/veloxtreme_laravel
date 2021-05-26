@@ -25,6 +25,7 @@ class CheckoutController extends BaseController
         $user->patronymic = $request->input('patronymic');
         $user->number = $request->input('number');
         $user->email = $request->input('email');
+        $user->password = 111111;
         $user->patronymic = $request->input('patronymic');
         $user->save();
         $order = new Order();

@@ -3,10 +3,10 @@
     -
 @endsection
 @section('head')
-    <link rel="stylesheet" href="less/store.css">
-    <link rel="stylesheet" href="less/filters.css">
-    <link rel="stylesheet" href="less/login.css">
-    <link rel="stylesheet" href="less/search.css">
+    <link rel="stylesheet" href="/less/store.css">
+    <link rel="stylesheet" href="/less/filters.css">
+    <link rel="stylesheet" href="/less/login.css">
+    <link rel="stylesheet" href="/less/search.css">
 @endsection
 @section('store')
     <h1>Велосипеди</h1>
@@ -14,12 +14,12 @@
         <div class="filter-section">
             <div class="store-header-filter">
                 <div class="filter-label">
-                    <img src="image/icons/filter.svg" onclick="openFilter()">
+                    <img src="/image/icons/filter.svg" onclick="openFilter()">
                     <h1>Фільтри</h1>
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Велосипеди</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Велосипеди</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="teen-sidefilter" name="teen-sidefilter">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Ціна</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Ціна</button>
                 <div class="content" style="display: block;">
                     <div class="price-slider">
                         <input type="text" placeholder="Від">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Діаметр коліс</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Діаметр коліс</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="18-sidefilter" name="18-sidefilter">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Виробник</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Виробник</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="Apollo-sidefilter" name="Apollo-sidefilter">
@@ -117,138 +117,25 @@
             <div class="store-section-items">
                 @foreach($products as $product)
                     <div class="store-item">
-                        <a href="/store">
-                            <img src="{{$product->img1}}">
+                        <a href="/product/{{$product->id}}">
+                            <img src="/{{$product->img1}}">
                             <div class="desc">
                                 <div class="item-desc">
                                     <span class="model">{{$product->manufacturer}}</span>
                                     <div class="price-buy">
                                         <span class="price">{{$product->price}}₴</span>
-                                        <button><img src="image/icons/shopping-basket.svg"></button>
+                                        <button><img src="/image/icons/shopping-basket.svg"></button>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
                 @endforeach
-                <!--<div class="store-item" id="1">
-                    <a href="product.html">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="store-item" id="2">
-                    <a href="#">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="store-item" id="3">
-                    <a href="#">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="store-item" id="4">
-                    <a href="#">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="store-item" id="5">
-                    <a href="#">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="store-item" id="6">
-                    <a href="#">
-                        <img src="image/bikes/bike3.png">
-                        <div class="desc">
-                            <div class="item-desc">
-                                <span class="model">Trek Marlin 5 2020</span>
-                                <div class="price-buy">
-                                    <span class="price">12999₴</span>
-                                    <button><img src="image/icons/shopping-basket.svg"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>-->
             </div>
         </div>
     </div>
     <div class="pagination">
-        <ul class="pagination-list">
-            <li class="pagination-arrow left-arrow">
-                <a href="#">
-                    <img src="image/icons/down-arrow.svg">
-                </a>
-            </li>
-            <li class="pagination-item selected">
-                <a href="#">1</a>
-            </li>
-            <li class="pagination-item">
-                <a href="#">2</a>
-            </li>
-            <li class="pagination-item">
-                <a href="#">3</a>
-            </li>
-            <li class="pagination-item">
-                <a href="#">4</a>
-            </li>
-            <li class="pagination-item">
-                <a href="#">5</a>
-            </li>
-            <li class="pagination-item">
-                <a href="#">6</a>
-            </li>
-            <li class="pagination-arrow right-arrow">
-                <a href="#">
-                    <img src="image/icons/down-arrow.svg">
-                </a>
-            </li>
-        </ul>
+        {{$products->links('vendor/pagination/bootstrap-4')}}
     </div>
     <div id="mySidefilter" class="sidefilter">
         <div class="close-button">
@@ -256,7 +143,7 @@
         </div>
         <div class="filter-section">
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Велосипеди</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Велосипеди</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="teen" name="teen">
@@ -281,7 +168,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Ціна</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Ціна</button>
                 <div class="content" style="display: block;">
                     <div class="price-slider">
                         <input type="text" placeholder="Від">
@@ -290,7 +177,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Діаметр коліс</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Діаметр коліс</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="18" name="18">
@@ -315,7 +202,7 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="image/icons/down-arrow.svg">Виробник</button>
+                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Виробник</button>
                 <div class="content" style="display: block;">
                     <div class="checkbox-filter">
                         <input type="checkbox" id="Apollo" name="Apollo">
@@ -420,11 +307,10 @@
             <input type="text" placeholder="Пошук" name="search" required>
         </div>
         <div class="search-button">
-            <img src="image/icons/loupe-dark-blue.svg">
+            <img src="/image/icons/loupe-dark-blue.svg">
         </div>
         <div class="close" title="Close Modal"><div onclick="closeSearch()">&times;</div></div>
     </div>
-    <script src="./script/collapsible.js"></script>
     <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
@@ -529,4 +415,5 @@
         }
 
     </script>
+    <script src="/script/collapsible.js"></script>
 @endsection

@@ -48,8 +48,7 @@ Fb: facebook.com/veloXtreme</pre>
         <div class="address">
             <span class="title">Адреса:</span>
             <span class="addres"> м.Київ, вул. Освіти 18</span>
-            <div id="map"></div>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4uA398PvyXnikrfVTnvTdsulTMZ8kKiE&callback=initMap&libraries=&v=weekly"></script>
-        </div>
+            <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.4348112365847!2d30.46670790572472!3d50.42395786677653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cec7ff162265%3A0x583a7f73464b8172!2z0YPQuy4g0J_RgNC-0YHQstC10YnQtdC90LjRjywgMTgsINCa0LjQtdCyLCAwMjAwMA!5e0!3m2!1sru!2sua!4v1621851756175!5m2!1sru!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+         </div>
     </div>
 @endsection
