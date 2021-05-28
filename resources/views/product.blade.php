@@ -41,7 +41,15 @@
                 <div class="buy-section">
                     <div class="buy">
                         <h1>{{$product->price}}₴</h1>
-                        <button><p>Купити</p><img src="/image/icons/shopping-backet.svg"></button>
+                        @if( auth()->check() )
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" value="{{ $product->id }}" id="id" name="id">
+                                <button type="submit"><p>Купити</p><img src="/image/icons/shopping-basket.svg" ></button>
+                            </form>
+                        @else
+                        <button onclick="openLogin()"><p>Купити</p><img src="/image/icons/shopping-backet.svg"></button>
+                        @endif
                     </div>
                     <div class="choice-char">
                         <div class="choice-color">

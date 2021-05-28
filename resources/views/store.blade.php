@@ -124,7 +124,15 @@
                                     <span class="model">{{$product->manufacturer}}</span>
                                     <div class="price-buy">
                                         <span class="price">{{$product->price}}₴</span>
-                                        <button><img src="/image/icons/shopping-basket.svg"></button>
+                                        @if( auth()->check() )
+                                            <form action="{{ route('cart.store') }}" method="POST">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" value="{{ $product->id }}" id="id" name="id">
+                                                <button type="submit"><img src="/image/icons/shopping-basket.svg" ></button>
+                                            </form>
+                                        @else
+{{--                                            <button onclick="openLogin()"><img src="/image/icons/shopping-basket.svg" ></button>--}}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -228,89 +236,6 @@
             </div>
         </div>
     </div>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Велосипеди</a>
-        <a href="">Запчастини</a>
-        <a href="">Аксесуари</a>
-        <a href="">Контакти</a>
-    </div>
-    <div id="login-form" class="modal">
-        <form class="modal-content animate" action="#">
-            <div class="close" title="Close Modal"><div onclick="closeLogin()">&times;</div></div>
-            <h2>Вхід в профіль</h2>
-            <div class="login-body">
-                <div class="login-info">
-                    <label for="uname">Email</label>
-                    <input type="text" placeholder="Введіть Email" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="psw">Пароль</label>
-                    <input type="password" placeholder="Введіть пароль" name="psw" required>
-                </div>
-                <div class="submit-section">
-                    <button type="submit">Ввійти</button>
-                    <span class="psw"><a>Забули пароль?</a></span>
-                </div>
-            </div>
-            <div class="login-footer checkbox-filter">
-                <div class="remember-block">
-                    <input id="remember" type="checkbox" checked="checked" name="remember"/>
-                    <label for="remember">Запам'ятати мене</label>
-                </div>
-                <a onclick="closeLogin();openRegister()">Зареєструватись</a>
-            </div>
-        </form>
-    </div>
-    <div id="signup-form" class="modal">
-        <form class="modal-content signup animate" action="#">
-            <div class="close" title="Close Modal"><div onclick="closeRegister()">&times;</div></div>
-            <h2>Реєстрація</h2>
-            <div class="login-body">
-                <div class="login-info">
-                    <label for="uname">Ім'я</label>
-                    <input type="text" placeholder="Введіть ім'я" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="uname">Прізвище</label>
-                    <input type="text" placeholder="Введіть прізвище" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="uname">Email</label>
-                    <input type="text" placeholder="Введіть по-батькові" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="uname">Номер телефону</label>
-                    <input type="text" placeholder="Введіть номер телефону" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="uname">Email</label>
-                    <input type="text" placeholder="Введіть Email" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="psw">Пароль</label>
-                    <input type="password" placeholder="Введіть пароль" name="psw" required>
-                </div>
-                <div class="login-info">
-                    <label for="psw">Повторіть пароль</label>
-                    <input type="password" placeholder="Повторіть пароль" name="psw" required>
-                </div>
-                <div class="submit-section">
-                    <button type="submit">Створити аккаунт</button>
-                    <span class="psw"><a onclick="closeRegister(); openLogin()">Ввійти</a></span>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div id="search">
-        <div class="login-info">
-            <input type="text" placeholder="Пошук" name="search" required>
-        </div>
-        <div class="search-button">
-            <img src="/image/icons/loupe-dark-blue.svg">
-        </div>
-        <div class="close" title="Close Modal"><div onclick="closeSearch()">&times;</div></div>
-    </div>
     <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
@@ -368,52 +293,6 @@
                 }
             })
         }
-    </script>
-    <script>
-        var modal = document.getElementById('login-form');
-        var modal2 = document.getElementById('signup-form')
-        var modal3 = document.getElementById('search')
-        window.onclick = function(event) {
-            if (event.target === modal || event.target === modal2 || event.target === modal3) {
-                modal.style.display = "none"
-                modal2.style.display = "none"
-                modal3.style.display = "none"
-                closeLogin()
-                closeRegister()
-                closeSearch()
-            }
-        }
-
-        function openLogin() {
-            document.getElementById('login-form').style.display='flex'
-            document.body.style.overflow = 'hidden'
-        }
-
-        function closeLogin() {
-            document.getElementById('login-form').style.display='none'
-            document.body.removeAttribute('style')
-        }
-
-        function openRegister() {
-            document.getElementById('signup-form').style.display='flex'
-            document.body.style.overflow = 'hidden'
-        }
-
-        function closeRegister() {
-            document.getElementById('signup-form').style.display='none'
-            document.body.removeAttribute('style')
-        }
-
-        function openSearch() {
-            document.getElementById('search').style.display='flex'
-            document.body.style.overflow='hidden'
-        }
-
-        function closeSearch() {
-            document.getElementById('search').style.display='none'
-            document.body.removeAttribute('style')
-        }
-
     </script>
     <script src="/script/collapsible.js"></script>
 @endsection

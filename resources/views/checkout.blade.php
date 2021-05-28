@@ -12,35 +12,35 @@
         @csrf
         <div class="block-1">
             <span class="checkout-title">Оформлення замовлення</span>
-            <div class="row2">
-                <span class="your-contacts">Ваші контактні дані</span>
-                <span class="login-button" onclick="openLogin()">Увійти в аккаунт</span>
-            </div>
+{{--            <div class="row2">--}}
+{{--                <span class="your-contacts">Ваші контактні дані</span>--}}
+{{--                <span class="login-button" onclick="openLogin()">Увійти в аккаунт</span>--}}
+{{--            </div>--}}
             <div class="login-body">
-                <div class="login-info">
-                    <label for="uname">Ім'я</label>
-                    <input type="text" placeholder="Введіть ім'я" name="uname" required>
-                </div>
-                <div class="login-info">
-                    <label for="surname">Прізвище</label>
-                    <input type="text" placeholder="Введіть прізвище" name="surname" required>
-                </div>
-                <div class="login-info">
-                    <label for="patronymic">По-батькові</label>
-                    <input type="text" placeholder="Введіть по-батькові" name="patronymic" required>
-                </div>
-                <div class="login-info">
-                    <label for="number">Номер телефону</label>
-                    <input type="tel" placeholder="Введіть номер телефону" name="number" required>
-                </div>
-                <div class="login-info">
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="Введіть Email" name="email" required>
-                </div>
-                <div class="login-info">
-                    <label for="comment">Коментар</label>
-                    <input type="text" placeholder="Введіть коментар" name="comment" required>
-                </div>
+{{--                <div class="login-info">--}}
+{{--                    <label for="uname">Ім'я</label>--}}
+{{--                    <input type="text" placeholder="Введіть ім'я" name="uname" required>--}}
+{{--                </div>--}}
+{{--                <div class="login-info">--}}
+{{--                    <label for="surname">Прізвище</label>--}}
+{{--                    <input type="text" placeholder="Введіть прізвище" name="surname" required>--}}
+{{--                </div>--}}
+{{--                <div class="login-info">--}}
+{{--                    <label for="patronymic">По-батькові</label>--}}
+{{--                    <input type="text" placeholder="Введіть по-батькові" name="patronymic" required>--}}
+{{--                </div>--}}
+{{--                <div class="login-info">--}}
+{{--                    <label for="number">Номер телефону</label>--}}
+{{--                    <input type="tel" placeholder="Введіть номер телефону" name="number" required>--}}
+{{--                </div>--}}
+{{--                <div class="login-info">--}}
+{{--                    <label for="email">Email</label>--}}
+{{--                    <input type="email" placeholder="Введіть Email" name="email" required>--}}
+{{--                </div>--}}
+{{--                <div class="login-info">--}}
+{{--                    <label for="comment">Коментар</label>--}}
+{{--                    <input type="text" placeholder="Введіть коментар" name="comment" required>--}}
+{{--                </div>--}}
                 <div class="variant-of-delivery">
                     <span class="delivery-title">Спосіб доставки</span>
                     <div class="radiobuttons">
@@ -88,69 +88,100 @@
             </div>
         </div>
         <div class="items">
-            <span class="basket">Обрані товари</span>
-{{--            @foreach($products as $product)--}}
-            <div class="block2">
-                <img src="image/bikes/bike1.png">
-                <div class="insides">
-                    <div class="row1">
-                        <div class="name">
-                            <span class="model">Модель: </span> <span class="title1">Trek Marlin 5 2020</span>
+            @foreach($products as $product)
+                <div class="block2">
+                    <img src={{$product->img1}}>
+                    <div class="insides">
+                        <div class="row1">
+                            <div class="name">
+                                <span class="model">Модель: </span> <span class="title1">{{$product->manufacturer}} {{$product->model}}</span>
+                            </div>
+                            <span class="price">{{$product->price}}</span>
                         </div>
-                        <span class="price">12999₴</span>
-                    </div>
 
-                    <div class="row2">
-                        <div>
-                            <span>Розмір: </span> <span>27”</span>
+                        <div class="row2">
+                            <div>
+                                <span>Розмір: </span> <span>{{$product->diameter}}”</span>
+                            </div>
+                            <div>
+                                <span>Колір: </span>  <span>{{$product->color}}</span>
+                            </div>
+                            <div>
+                                <span>Код товару: </span> <span>{{$product->id}}</span>
+                            </div>
                         </div>
-                        <div>
-                            <span>Колір: </span>  <span>black</span>
+                        <div class="row3">
+                            <button class="plus">+</button>
+                            <span>1</span>
+                            <button class="minus">-</button>
+                            <img src="image/icons/garbage.svg">
                         </div>
-                        <div>
-                            <span>Код товару: </span> <span>548012</span>
-                        </div>
-                    </div>
-                    <div class="row3">
-                        <button class="plus">+</button>
-                        <span>1</span>
-                        <button class="minus">-</button>
-                        <img src="image/icons/garbage.svg">
                     </div>
                 </div>
-            </div>
-            <div class="block2">
-                <img src="image/bikes/bike1.png">
-                <div class="insides">
-                    <div class="row1">
-                        <div class="name">
-                            <span class="model">Модель: </span> <span class="title1">Trek Marlin 5 2020</span>
-                        </div>
-                        <span class="price">12999₴</span>
-                    </div>
-
-                    <div class="row2">
-                        <div>
-                            <span>Розмір: </span> <span>27”</span>
-                        </div>
-                        <div>
-                            <span>Колір: </span>  <span>black</span>
-                        </div>
-                        <div>
-                            <span>Код товару: </span> <span>548012</span>
-                        </div>
-                    </div>
-                    <div class="row3">
-                        <button class="plus">+</button>
-                        <span>1</span>
-                        <button class="minus">-</button>
-                        <img src="image/icons/garbage.svg">
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <div class="for-button">
                 <button type="submit" class="checkout">Оформити замовлення</button>
             </div>
         </div>
     </form>
 @endsection
+{{--            <span class="basket">Обрані товари</span>--}}
+{{--            @foreach($products as $product)--}}
+{{--            <div class="block2">--}}
+{{--                <img src="image/bikes/bike1.png">--}}
+{{--                <div class="insides">--}}
+{{--                    <div class="row1">--}}
+{{--                        <div class="name">--}}
+{{--                            <span class="model">Модель: </span> <span class="title1">Trek Marlin 5 2020</span>--}}
+{{--                        </div>--}}
+{{--                        <span class="price">12999₴</span>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="row2">--}}
+{{--                        <div>--}}
+{{--                            <span>Розмір: </span> <span>27”</span>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <span>Колір: </span>  <span>black</span>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <span>Код товару: </span> <span>548012</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row3">--}}
+{{--                        <button class="plus">+</button>--}}
+{{--                        <span>1</span>--}}
+{{--                        <button class="minus">-</button>--}}
+{{--                        <img src="image/icons/garbage.svg">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="block2">--}}
+{{--                <img src="image/bikes/bike1.png">--}}
+{{--                <div class="insides">--}}
+{{--                    <div class="row1">--}}
+{{--                        <div class="name">--}}
+{{--                            <span class="model">Модель: </span> <span class="title1">Trek Marlin 5 2020</span>--}}
+{{--                        </div>--}}
+{{--                        <span class="price">12999₴</span>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="row2">--}}
+{{--                        <div>--}}
+{{--                            <span>Розмір: </span> <span>27”</span>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <span>Колір: </span>  <span>black</span>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <span>Код товару: </span> <span>548012</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row3">--}}
+{{--                        <button class="plus">+</button>--}}
+{{--                        <span>1</span>--}}
+{{--                        <button class="minus">-</button>--}}
+{{--                        <img src="image/icons/garbage.svg">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}

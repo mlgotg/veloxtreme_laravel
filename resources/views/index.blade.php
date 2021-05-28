@@ -30,9 +30,11 @@
     <div class="icons">
         <img src="/image/icons/loupe.svg" onclick="openSearch()">
         <img src="/image/icons/account.svg" onclick="openLogin()">
+        @if( auth()->check() )
         <a href="\basket" style="text-decoration: none">
             <img src="/image/icons/shopping-backet.svg">
         </a>
+        @endif
         <img src="/image/icons/menu.svg" onclick="openNav()" class="nav-button">
         <script>
             function openNav() {

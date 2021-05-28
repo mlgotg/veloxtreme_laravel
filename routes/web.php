@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/accessories', function () {
 });
 Route::get('/basket', '\App\Http\Controllers\BasketController@view');
 Route::get('/checkout', function () {
-    return view('checkout');
+    return view('checkout', ['products' => auth()->user() -> products]);
 });
 Route::get('/contact', function () {
     return view('contact');
@@ -33,7 +34,12 @@ Route::get('/store', function () {
 Route::get('/product/{id}', '\App\Http\Controllers\ProductController@showProduct');
 Route::get('/store', '\App\Http\Controllers\ProductController@getProducts');
 Route::post('/submit', '\App\Http\Controllers\CheckoutController@write');
+
 Route::post('/', '\App\Http\Controllers\LoginController@login')->name('login');
 Route::post('/sign', '\App\Http\Controllers\SignController@create')->name('sign');
 Route::get('/logout', '\App\Http\Controllers\SessionsController@destroy');
+
+Route::post('/store', '\App\Http\Controllers\BasketController@add')->name('cart.store');
+Route::post('/update', '\App\Http\Controllers\BasketController@update')->name('cart.update');
+Route::post('/remove', '\App\Http\Controllers\BasketController@remove')->name('cart.remove');
 
