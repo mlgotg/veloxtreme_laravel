@@ -1,6 +1,6 @@
 @extends("index")
 @section('title')
-    Велосипеди
+    {{$_GET['type']}}
 @endsection
 @section('head')
     <link rel="stylesheet" href="/less/store.css">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/less/search.css">
 @endsection
 @section('store')
-    <h1>Велосипеди</h1>
+    <h1>{{$_GET['type']}}</h1>
     <div class="store-section">
         <div class="filter-section">
             <div class="store-header-filter">
@@ -29,35 +29,9 @@
                     </div>
                 </div>
                 <div class="filters">
-                    <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Велосипеди</button>
-                    <div class="content" style="display: block;">
-                        @foreach($products_types as $type)
-                            @foreach($type as $col_id => $col_val)
-                                <div class="checkbox-filter p_x">
-                                    <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                    <label>{{$col_val}}</label>
-                                </div>
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
-                <div class="filters">
                     <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Колір</button>
                     <div class="content" style="display: block;">
                         @foreach($colors as $type)
-                            @foreach($type as $col_id => $col_val)
-                                <div class="checkbox-filter p_x">
-                                    <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                    <label>{{$col_val}}</label>
-                                </div>
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
-                <div class="filters">
-                    <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Діаметр</button>
-                    <div class="content" style="display: block;">
-                        @foreach($diameters as $type)
                             @foreach($type as $col_id => $col_val)
                                 <div class="checkbox-filter p_x">
                                     <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
@@ -80,32 +54,6 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="filters">
-                    <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Матеріал рами</button>
-                    <div class="content" style="display: block;">
-                        @foreach($frames as $type)
-                            @foreach($type as $col_id => $col_val)
-                                <div class="checkbox-filter p_x">
-                                    <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                    <label>{{$col_val}}</label>
-                                </div>
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
-                <div class="filters">
-                    <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Тип гальм</button>
-                    <div class="content" style="display: block;">
-                        @foreach($brakes_types as $type)
-                            @foreach($type as $col_id => $col_val)
-                                <div class="checkbox-filter p_x">
-                                    <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                    <label>{{$col_val}}</label>
-                                </div>
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
             </div>
         </div>
         <div class="product-section">
@@ -113,30 +61,30 @@
                 <div class="sort-label">
                     <h3>Сортувати за: </h3>
                     <select>
-                        <option {{isset($_GET['sort']) ? ('0' ? "selected" : "") : ""}}>замовчуванням</option>
-                        <option {{isset($_GET['sort']) ? ('1' ? "selected" : "") : ""}}>ціною</option>
-                        <option {{isset($_GET['sort']) ? ('2' ? "selected" : "") : ""}}>алфавітом</option>
+                        <option>замовчуванням</option>
+                        <option>ціною</option>
+                        <option>алфавітом</option>
                     </select>
                 </div>
             </div>
             <div class="store-section-items">
-                @foreach($products as $product)
+                @foreach($accessories as $accessory)
                     <div class="store-item">
-                        <a href="/product/{{$product->id}}">
-                            <img src="/{{$product->img1}}">
+                        <a href="/product/{{$accessory->id}}">
+                            <img src="/{{$accessory->img1}}">
                             <div class="desc">
                                 <div class="item-desc">
-                                    <span class="model">{{$product->manufacturer}}</span>
+                                    <span class="model">{{$accessory->manufacturer}}</span>
                                     <div class="price-buy">
-                                        <span class="price">{{$product->price}}₴</span>
+                                        <span class="price">{{$accessory->price}}₴</span>
                                         @if( auth()->check() )
                                             <form action="{{ route('cart.store') }}" method="POST">
                                                 {{ csrf_field() }}
-                                                <input type="hidden" value="{{ $product->id }}" id="id" name="id">
+                                                <input type="hidden" value="{{ $accessory->id }}" id="id" name="id">
                                                 <button type="submit"><img src="/image/icons/shopping-basket.svg" ></button>
                                             </form>
                                         @else
-{{--                                            <button onclick="openLogin()"><img src="/image/icons/shopping-basket.svg" ></button>--}}
+                                            {{--                                            <button onclick="openLogin()"><img src="/image/icons/shopping-basket.svg" ></button>--}}
                                         @endif
                                     </div>
                                 </div>
@@ -148,7 +96,7 @@
         </div>
     </div>
     <div class="pagination">
-        {{$products->links('vendor/pagination/bootstrap-4')}}
+        {{$accessories->links('vendor/pagination/bootstrap-4')}}
     </div>
     <div id="mySidefilter" class="sidefilter">
         <div class="close-button">
@@ -165,35 +113,9 @@
                 </div>
             </div>
             <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Велосипеди</button>
-                <div class="content" style="display: block;">
-                    @foreach($products_types as $type)
-                        @foreach($type as $col_id => $col_val)
-                            <div class="checkbox-filter p_x">
-                                <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                <label>{{$col_val}}</label>
-                            </div>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-            <div class="filters">
                 <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Колір</button>
                 <div class="content" style="display: block;">
                     @foreach($colors as $type)
-                        @foreach($type as $col_id => $col_val)
-                            <div class="checkbox-filter p_x">
-                                <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                <label>{{$col_val}}</label>
-                            </div>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-            <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Діаметр</button>
-                <div class="content" style="display: block;">
-                    @foreach($diameters as $type)
                         @foreach($type as $col_id => $col_val)
                             <div class="checkbox-filter p_x">
                                 <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
@@ -210,32 +132,6 @@
                         @foreach($type as $col_id => $col_val)
                             <div class="checkbox-filter p_x">
                                 <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                <label>{{$col_val}}</label>
-                            </div>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-            <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Матеріал рами</button>
-                <div class="content" style="display: block;">
-                    @foreach($frames as $type)
-                        @foreach($type as $col_id => $col_val)
-                            <div class="checkbox-filter p_x">
-                                <input type="checkbox" name="{{$col_id}}" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
-                                <label>{{$col_val}}</label>
-                            </div>
-                        @endforeach
-                    @endforeach
-                </div>
-            </div>
-            <div class="filters">
-                <button type="button" class="collapsible active"><img class="arrow" src="/image/icons/down-arrow.svg">Тип гальм</button>
-                <div class="content" style="display: block;">
-                    @foreach($brakes_types as $type)
-                        @foreach($type as $col_id => $col_val)
-                            <div class="checkbox-filter p_x">
-                                <input type="checkbox" name="{{$col_id}}[]" value="{{$col_val}}" {{isset($_GET[$col_id]) ? (str_contains($_GET[$col_id], $col_val) ? "checked" : "") : ""}}>
                                 <label>{{$col_val}}</label>
                             </div>
                         @endforeach
@@ -411,19 +307,6 @@
                 document.location.reload()
             })
         }
-        /*var sort = document.getElementsByClassName("sort-label")[0].lastElementChild
-            sort.addEventListener("change", function () {
-                let j = url.indexOf("sort")
-                let c = url.indexOf('&', j)
-                url = (url.slice(0, j) + "sort=" + sort.selectedIndex + url.slice(c));
-                url = url.replace("&&", "&")
-                window.history.pushState({ path: url }, '', url);
-                var links = document.getElementsByClassName("page-link")
-                for(let m = 0; m < links.length; m++) {
-                    links[m].href = url.replace("page=" + activePage, "page=" + m + '&')
-                }
-                document.location.reload()
-            })*/
     </script>
     <script src="/script/collapsible.js"></script>
 @endsection

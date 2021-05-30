@@ -50,7 +50,6 @@ class CheckoutController extends BaseController
         }
         //$order->products = auth()->user()->products;
         DB::delete('delete from product_user where user_id = :user_id', ['user_id' => auth()->user()->id]);
-
         return view('submit');
     }
 

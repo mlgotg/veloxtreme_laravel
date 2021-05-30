@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,12 @@ Route::get('/accessories', function () {
 });
 Route::get('/basket', '\App\Http\Controllers\BasketController@view');
 Route::get('/checkout', function () {
-    return view('checkout', ['products' => auth()->user() -> products]);
+    $products= auth()->user() -> products;
+    $counts = [];
+    for ($i = 0; $i < sizeof($products); $i++){
+        $counts[$i] = preg_replace( '/[^0-9]/', '', DB::table('product_user') -> where('product_id', $products[$i]->id)->get('count'));
+    }
+    return view('checkout', ['products' => $products, 'counts' => $counts]);
 });
 Route::get('/contact', function () {
     return view('contact');
@@ -42,4 +48,12 @@ Route::get('/logout', '\App\Http\Controllers\SessionsController@destroy');
 Route::post('/store', '\App\Http\Controllers\BasketController@add')->name('cart.store');
 Route::post('/update', '\App\Http\Controllers\BasketController@update')->name('cart.update');
 Route::post('/remove', '\App\Http\Controllers\BasketController@remove')->name('cart.remove');
+
+Route::get('/store/accessories', '\App\Http\Controllers\ProductController@getAccessoriesTypes');
+
+Route::get('store/accessories/selected', '\App\Http\Controllers\ProductController@getAccessories');
+
+Route::get('/store/parts', '\App\Http\Controllers\ProductController@getPartsTypes');
+
+Route::get('store/parts/selected', '\App\Http\Controllers\ProductController@getParts');
 

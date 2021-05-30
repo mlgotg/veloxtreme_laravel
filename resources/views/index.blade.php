@@ -22,10 +22,10 @@
         <img src="/image/logo-mobile.svg" class="logo-mob">
     </a>
     <div class="menu">
-        <a href="\store">Велосипеди</a>
-        <a>Запчастини</a>
-        <a>Аксесуари</a>
-        <a href="\contact">Контакти</a>
+        <a href="/store?page=1&">Велосипеди</a>
+		<a href="/store/parts">Запчастини</a>
+		<a href="/store/accessories">Аксесуари</a>
+		<a href="/contact">Контакти</a>
     </div>
     <div class="icons">
         <img src="/image/icons/loupe.svg" onclick="openSearch()">
@@ -49,10 +49,10 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="\store">Велосипеди</a>
-    <a href="">Запчастини</a>
-    <a href="">Аксесуари</a>
-    <a href="\contact">Контакти</a>
+    <a href="/store?page=1&">Велосипеди</a>
+    <a href="/store/parts">Запчастини</a>
+    <a href="/store/accessories">Аксесуари</a>
+    <a href="/contact">Контакти</a>
 </div>
 @yield('accessories')
 @yield('main')
@@ -70,7 +70,7 @@
         @if( auth()->check() )
             <div class="account">
                 <span class="hello">Добрий день, {{ auth()->user()->name }}</span>
-                <button><a class="nav-link" href="/logout">Log Out</a></button>
+                <button onclick="location.href='logout'">Вийти</button>
             </div>
         @else
         <div class="close" title="Close Modal"><div onclick="closeLogin()">&times;</div></div>

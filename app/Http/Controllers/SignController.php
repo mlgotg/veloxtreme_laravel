@@ -30,7 +30,7 @@ class SignController extends BaseController
         $user->save();
         auth()->login($user);
         //dd($user);
-        return view('main');
+        return redirect('/');
 
     }
 
