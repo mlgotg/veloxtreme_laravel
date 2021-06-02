@@ -40,6 +40,13 @@ class ProductController extends BaseController
             $brakes = explode(' ', $_GET['brakes']);
             $res = $res->whereIn('brakes', $brakes);
         }
+        if(isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+            if($sort == 'price_asc') $res = $res->orderBy('price', 'asc');
+            else if($sort == 'price_desc') $res = $res->orderByDesc('price');
+            else if($sort == 'alpha_asc') $res = $res->orderBy('manufacturer')->orderBy('model');
+            else if($sort == 'alpha_desc') $res = $res->orderByDesc('manufacturer')->orderByDesc('model');
+        }
         return view('store', ['products' => $res->paginate(12)->withPath('/store'),
             'products_types' => Product::where('product_type', 'Велосипеди')->select('type')->distinct()->orderBy('type')->get()->map->only('type'),
             'colors' => Product::where('product_type', 'Велосипеди')->select('color')->distinct()->orderBy('color')->get()->map->only('color'),
@@ -68,6 +75,13 @@ class ProductController extends BaseController
             $manufacturers = explode(' ', $_GET['manufacturer']);
             $res = $res->whereIn('manufacturer', $manufacturers);
         }
+        if(isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+            if($sort == 'price_asc') $res = $res->orderBy('price', 'asc');
+            else if($sort == 'price_desc') $res = $res->orderByDesc('price');
+            else if($sort == 'alpha_asc') $res = $res->orderBy('manufacturer')->orderBy('model');
+            else if($sort == 'alpha_desc') $res = $res->orderByDesc('manufacturer')->orderByDesc('model');
+        }
         return view('accessories_selected', ['name' => 'Аксесуари','lnk'=>'accessories','accessories' => $res->paginate(12)->withPath('/store/accessories/selected'),
             'colors' => Product::where('product_type', 'Аксесуари')->where('type', $_GET['type'])->select('color')->distinct()->orderBy('color')->get()->map->only('color'),
             'manufacturers' => Product::where('product_type', 'Аксесуари')->where('type', $_GET['type'])->select('manufacturer')->distinct()->orderBy('manufacturer')->get()->map->only('manufacturer')
@@ -92,6 +106,13 @@ class ProductController extends BaseController
             $manufacturers = explode(' ', $_GET['manufacturer']);
             $res = $res->whereIn('manufacturer', $manufacturers);
         }
+        if(isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+            if($sort == 'price_asc') $res = $res->orderBy('price', 'asc');
+            else if($sort == 'price_desc') $res = $res->orderByDesc('price');
+            else if($sort == 'alpha_asc') $res = $res->orderBy('manufacturer')->orderBy('model');
+            else if($sort == 'alpha_desc') $res = $res->orderByDesc('manufacturer')->orderByDesc('model');
+        }
         return view('accessories_selected', ['name' => 'Запчастини','lnk'=>'parts','accessories' => $res->paginate(12)->withPath('/store/parts/selected'),
             'colors' => Product::where('product_type', 'Запчастини')->where('type', $_GET['type'])->select('color')->distinct()->orderBy('color')->get()->map->only('color'),
             'manufacturers' => Product::where('product_type', 'Запчастини')->where('type', $_GET['type'])->select('manufacturer')->distinct()->orderBy('manufacturer')->get()->map->only('manufacturer')
@@ -100,6 +121,6 @@ class ProductController extends BaseController
 
     public function showProduct($id){
         return view('product', ['product' => DB::table('products')->find($id),
-            'reviews' => DB::table('reviews')->where('product_id', intval($id))->get()]);
+            'reviews' => Review::where('product_id', intval($id))->get()]);
     }
 }

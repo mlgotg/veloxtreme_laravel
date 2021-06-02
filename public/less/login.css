@@ -47,9 +47,18 @@
   text-decoration: none;
 }
 .modal .modal-content .login-body {
+  position: relative;
+  top: -15px;
   display: flex;
   flex-direction: column;
   padding: 0 12%;
+}
+.modal .modal-content .login-body span {
+  position: relative;
+  top: -15px;
+  height: 25px;
+  font-size: 14px;
+  color: #C4392F;
 }
 .modal .modal-content .login-body .submit-section {
   display: flex;
@@ -72,6 +81,8 @@
   cursor: pointer;
 }
 .modal .modal-content .login-footer {
+  position: relative;
+  top: -15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

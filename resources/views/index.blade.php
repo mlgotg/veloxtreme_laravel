@@ -33,6 +33,19 @@
         @if( auth()->check() )
         <a href="\basket" style="text-decoration: none">
             <img src="/image/icons/shopping-backet.svg">
+            <span style="
+                position: relative;
+                left: -5px;
+                top: -1px;
+                font-size: 13px;
+                color: #fff;
+            ">
+                @php
+                    $user = auth()->user();
+                    $products = $user -> products;
+                    echo sizeof($products);
+                @endphp
+            </span>
         </a>
         @endif
         <img src="/image/icons/menu.svg" onclick="openNav()" class="nav-button">
@@ -67,37 +80,46 @@
 <div id="login-form" class="modal">
     <form class="modal-content animate" action="{{route('login')}}" method="post">
         @csrf
+
         @if( auth()->check() )
             <div class="account">
                 <span class="hello">Добрий день, {{ auth()->user()->name }}</span>
-                <button onclick="location.href='logout'">Вийти</button>
+                <button onclick="location.href='logout'" style="border: 0">Вийти</button>
             </div>
         @else
-        <div class="close" title="Close Modal"><div onclick="closeLogin()">&times;</div></div>
-        <h2>Вхід в профіль</h2>
-        <div class="login-body">
-            <div class="login-info">
-                <label for="email">Email</label>
-                <input type="email" placeholder="Введіть Email" name="email" required>
+            <div class="close" title="Close Modal"><div onclick="closeLogin()">&times;</div></div>
+            <h2>Вхід в профіль</h2>
+
+            <div class="login-body">
+                <span>@if($errors->any())
+                        <script>
+                        document.getElementById('login-form').style.display='flex'
+                        document.body.style.overflow = 'hidden'
+                    </script>
+                        <h4>{{$errors->first()}}</h4>
+                    @endif</span>
+                <div class="login-info">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Введіть Email" name="email" required>
+                </div>
+                <div class="login-info">
+                    <label for="psw">Пароль</label>
+                    <input type="password" placeholder="Введіть пароль" name="password" required>
+                </div>
+                <div class="submit-section">
+                    <button type="submit">Ввійти</button>
+                    <span class="psw"><a>Забули пароль?</a></span>
+                </div>
             </div>
-            <div class="login-info">
-                <label for="psw">Пароль</label>
-                <input type="password" placeholder="Введіть пароль" name="password" required>
+            <div class="login-footer checkbox-filter">
+                <div class="remember-block">
+                    <input id="remember" type="checkbox" checked="checked" name="remember"/>
+                    <label for="remember">Запам'ятати мене</label>
+                </div>
+                <a onclick="closeLogin();openRegister()">Зареєструватись</a>
             </div>
-            <div class="submit-section">
-                <button type="submit">Ввійти</button>
-                <span class="psw"><a>Забули пароль?</a></span>
-            </div>
-        </div>
-        <div class="login-footer checkbox-filter">
-            <div class="remember-block">
-                <input id="remember" type="checkbox" checked="checked" name="remember"/>
-                <label for="remember">Запам'ятати мене</label>
-            </div>
-            <a onclick="closeLogin();openRegister()">Зареєструватись</a>
-        </div>
         @endif
-{{--        @include('partials.formerrors')--}}
+        {{--        @include('partials.formerrors')--}}
     </form>
 </div>
 <div id="signup-form" class="modal">

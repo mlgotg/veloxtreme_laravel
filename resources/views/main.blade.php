@@ -17,72 +17,37 @@
     <div class="hits">
         <span class="title">ХІТИ ПРОДАЖІВ</span>
         <div class="container">
-            <div class="item" id="1">
-                <img src="image/bikes/bike1.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
-            <div class="item" id="2">
-                <img src="image/bikes/bike2.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
-            <div class="item" id="3">
-                <img src="image/bikes/bike3.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
-            <div class="item" id="4">
-                <img src="image/bikes/bike4.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
-            <div class="item" id="5">
-                <img src="image/bikes/bike5.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
-            <div class="item" id="6">
-                <img src="image/bikes/bike6.png">
-                <span class="model">Trek Marlin 5 2020</span>
-                <span class="price">12999₴</span>
-            </div>
+            @foreach($products as $product)
+                    <a class="item" href="/product/{{$product->id}}">
+                        <img style="object-fit: cover" src="/{{$product->img1}}">
+                        <span class="model">{{$product->manufacturer}} {{$product->model}}</span>
+                        <span class="price">{{$product->price}}₴</span>
+                    </a>
+                @if($loop->iteration == 6)
+                    @break
+                @endif
+            @endforeach
         </div>
-
         <div class="other-model">
-            <a href="">Інші популярні моделі  🠒</a>
+            <a href="/store?page=1&">Інші популярні моделі  🠒</a>
         </div>
     </div>
     <div class="accessories">
         <span class="title">АКСЕСУАРИ</span>
         <div class="container">
-            <div class="item">
-                <img src="image/accessories/bicycle-computer.png">
-                <span>Велокомп'ютери</span>
-            </div>
-            <div class="item">
-                <img src="image/accessories/light.png">
-                <span>Ліхтарики</span>
-            </div>
-            <div class="item">
-                <img src="image/accessories/helmt.png">
-                <span>Шоломи</span>
-            </div>
-            <div class="item">
-                <img src="image/accessories/pump.png">
-                <span>Насоси</span>
-            </div>
-            <div class="item">
-                <img src="image/accessories/bottle.png">
-                <span>Фляги</span>
-            </div>
-            <div class="item">
-                <img src="image/accessories/glases.png">
-                <span>Окуляри</span>
-            </div>
+            @foreach($accessories_types as $a_type)
+                <a style="        text-decoration: none;
+        color:  #283044" class="item" href="/store/{{$lnk}}/selected?page=1&type={{$a_type->type}}">
+                    <img src="/{{$a_type->img1}}">
+                    <span>{{$a_type->type}}</span>
+                </a>
+                @if($loop->iteration == 4)
+                    @break
+                @endif
+            @endforeach
         </div>
         <div class="other-model">
-            <a href="">Інші аксесуари  🠒</a>
+            <a href="/store/accessories">Інші аксесуари  🠒</a>
         </div>
     </div>
     <div class="about-us-container">

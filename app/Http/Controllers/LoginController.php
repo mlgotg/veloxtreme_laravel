@@ -19,9 +19,9 @@ class LoginController extends BaseController
 //        //auth()->login($user);
         if (auth()->attempt(request(['email', 'password'])) == false) {
             return back()->withErrors([
-                'message' => 'The email or password is incorrect, please try again'
+                'message' => 'Неправильний email чи пароль'
             ]);
         }
-        return view('main');
+        return redirect('/');
     }
 }

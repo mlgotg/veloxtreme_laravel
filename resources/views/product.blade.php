@@ -127,7 +127,7 @@
                             <div class="review">
                                 <div class="review-header">
                                     <img src="/image/icons/account-blue.svg">
-                                    <h2>Перун Павло</h2>
+                                    <h2>{{$r->user->name}} {{$r->user->surname}}</h2>
                                 </div>
                                 <div class="review-body">
                                     <p>
@@ -136,6 +136,23 @@
                                 </div>
                             </div>
                         @endforeach
+                        @if(auth()->check())
+                            <div class="review">
+                                <div class="review-header">
+                                    <img src="/image/icons/account-blue.svg">
+                                    <h2>{{auth()->user()->name}} {{auth()->user()->surname}}</h2>
+                                </div>
+                                <div class="review-body">
+                                    <form method="post" action="{{route('feedback')}}">
+                                        @csrf
+                                        <label for="id"></label>
+                                        <input value="{{$product->id}}" id="id" name="id" type="hidden">
+                                        <label for="feedback"></label><textarea id="feedback" name="feedback" placeholder="Залишіть відгук"></textarea>
+                                        <button class="submit" type="submit">Залишити відгук</button>
+                                    </form>
+                                </div>
+                            </div>
+                            @endif
                     </div>
                 </div>
             </div>

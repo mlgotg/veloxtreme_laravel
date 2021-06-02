@@ -35,10 +35,12 @@ class BasketController extends Controller
         return redirect('/basket');
     }
     public function update(Request $request){
-        DB::table('product_user')
-            ->where('product_id', $request->input('id'))
-            ->where('user_id', auth()->user()->id)
-            ->update(['count' => $request->input('count')]);
+        if ($request->input('count')!==null){
+            DB::table('product_user')
+                ->where('product_id', $request->input('id'))
+                ->where('user_id', auth()->user()->id)
+                ->update(['count' => $request->input('count')]);
+        }
         return redirect('/basket');
     }
     public function view(){

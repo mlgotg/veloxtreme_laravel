@@ -68,9 +68,15 @@ class CheckoutController extends BaseController
                     ->get('count'))
             ]);
         }
+        $counts = [];
+        $products= auth()->user() ->products;
+        for ($i = 0; $i < sizeof($products); $i++){
+            $counts[$i] = preg_replace( '/[^0-9]/', '', DB::table('product_user') -> where('product_id', $products[$i]->id) -> where('user_id', auth()->user()->id)->get('count'));
+        }
         //$order->products = auth()->user()->products;
         DB::delete('delete from product_user where user_id = :user_id', ['user_id' => auth()->user()->id]);
-        return view('submit', ['message' => "Ваш заказ прийнято"]);
+
+        return view('submitorder', ['order' => $order, 'counts' => $counts, 'products' => $products]);
     }
 
 }

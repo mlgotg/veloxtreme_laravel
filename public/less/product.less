@@ -282,6 +282,29 @@ body{
           }
         }
         .review-section{
+            form{
+                textarea {
+                    min-height: 50px;
+                    width: calc(100% - 16px);
+                    background: @lightblue;
+                    border: 1px solid @blue;
+                    border-radius: 0;
+                    padding-inline: 8px;
+
+                    &:active, &:focus {
+                        outline: none;
+                    }
+
+                }
+                .submit {
+                    font-size: 14px;
+                    padding: 4px;
+                    width: 50%;
+                    margin-bottom: 0px;
+                    text-align: center;
+                }
+            }
+
           button{
             font-size: 24px;
             font-family: @font1;
@@ -290,7 +313,6 @@ body{
             background: @lightblue;
             text-align: left;
             cursor: pointer;
-            border: 0;
             outline: none;
             border: 1px solid @blue;
             margin-bottom: 20px;

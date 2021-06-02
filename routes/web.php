@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('main', ['products' => Product::where('product_type', 'Велосипеди')->paginate(6),
+        'name' => 'Аксесуари', 'lnk'=>'accessories','accessories_types' =>
+            Product::where('product_type', 'Аксесуари')->whereIn('id', function($query) {$query->selectRaw('min(id)')
+            ->from('products')->where('product_type', 'Аксесуари')->groupBy('type');})->orderBy('product_type')->get()]);
 });
 Route::get('/accessories', function () {
     return view('accessories');
@@ -41,12 +45,10 @@ Route::get('/logout', '\App\Http\Controllers\SessionsController@destroy');
 Route::post('/store', '\App\Http\Controllers\BasketController@add')->name('cart.store');
 Route::post('/update', '\App\Http\Controllers\BasketController@update')->name('cart.update');
 Route::post('/remove', '\App\Http\Controllers\BasketController@remove')->name('cart.remove');
+Route::post('/review', '\App\Http\Controllers\ReviewController@add')->name('feedback');
 
 Route::get('/store/accessories', '\App\Http\Controllers\ProductController@getAccessoriesTypes');
-
 Route::get('store/accessories/selected', '\App\Http\Controllers\ProductController@getAccessories');
-
 Route::get('/store/parts', '\App\Http\Controllers\ProductController@getPartsTypes');
-
 Route::get('store/parts/selected', '\App\Http\Controllers\ProductController@getParts');
 

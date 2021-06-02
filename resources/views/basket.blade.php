@@ -69,7 +69,7 @@
             }
             function minusClicks(id) {
                 count = document.getElementById("counter"+id).innerHTML;
-                if(parseInt(count) > 1){
+                if(parseInt(count) >= 2){
                     counter = parseInt(count) - 1;
                     document.getElementById("counter"+id).innerHTML = counter;
                     sum = parseInt(document.getElementById("sum").innerHTML) - parseInt(document.getElementById("price" + {{$product->id}}).innerHTML);

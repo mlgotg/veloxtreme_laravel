@@ -256,6 +256,25 @@ body .product-info .gallery-char .characteristics .chars-section .chars-body p {
   margin: 0;
   line-height: 28px;
 }
+body .product-info .gallery-char .characteristics .review-section form textarea {
+  min-height: 50px;
+  width: calc(100% - 16px);
+  background: #EBF5EE;
+  border: 1px solid #78A1BB;
+  border-radius: 0;
+  padding-inline: 8px;
+}
+body .product-info .gallery-char .characteristics .review-section form textarea:active,
+body .product-info .gallery-char .characteristics .review-section form textarea:focus {
+  outline: none;
+}
+body .product-info .gallery-char .characteristics .review-section form .submit {
+  font-size: 14px;
+  padding: 4px;
+  width: 50%;
+  margin-bottom: 0px;
+  text-align: center;
+}
 body .product-info .gallery-char .characteristics .review-section button {
   font-size: 24px;
   font-family: 'Open Sans', sans-serif;
@@ -264,7 +283,6 @@ body .product-info .gallery-char .characteristics .review-section button {
   background: #EBF5EE;
   text-align: left;
   cursor: pointer;
-  border: 0;
   outline: none;
   border: 1px solid #78A1BB;
   margin-bottom: 20px;

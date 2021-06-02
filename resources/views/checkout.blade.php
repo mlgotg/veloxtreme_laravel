@@ -44,7 +44,7 @@
                 <div class="variant-of-delivery">
                     <span class="delivery-title">Спосіб доставки</span>
                     <div class="radiobuttons">
-                        <input type="radio" id="delivery" name="delivery_type" style="display: none">
+                        <input type="radio" id="delivery" name="delivery_type" style="display: none" required>
                         <div class="radiobutton-filter">
                             <input type="radio" id="by-self" name="delivery_type" value="Самовивіз з магазину">
                             <label for="delivery_type">Самовивіз з магазину</label>
@@ -70,7 +70,7 @@
                 <div class="variant-of-pay">
                     <span class="pay-title">Спосіб оплати</span>
                     <div class="radiobuttons">
-                        <input type="radio" id="pay" name="pay_type" style="display: none">
+                        <input type="radio" id="pay" name="pay_type" style="display: none" required>
                         <div class="radiobutton-filter">
                             <input type="radio" id="cash" name="pay_type" value="Оплата готівкою">
                             <label for="pay_type">Оплата готівкою</label>
