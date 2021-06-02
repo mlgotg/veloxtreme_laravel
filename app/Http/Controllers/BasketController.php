@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use \App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller;
+use function PHPUnit\Framework\isNull;
 
 class BasketController extends Controller
 {
@@ -26,7 +27,7 @@ class BasketController extends Controller
             else {
                 DB::insert('insert into product_user (product_id, user_id) values (?, ?)', [$request->input('id'), auth()->user()->id]);
             }
-            return redirect('/store');
+            return redirect(url()->previous());
         }
     }
     public function remove(Request $request){
@@ -41,10 +42,14 @@ class BasketController extends Controller
         return redirect('/basket');
     }
     public function view(){
-        //DB::table('product_user') -> where('product_id', $product->id)->get('count');
         if(auth()->check()){
             $user = auth()->user();
             $products = $user -> products;
+            if(!isset($products[0])){
+                return view('submit', ['message' => "Ваша корзина пуста"]);
+            }
+
+
             $counts = [];
             for ($i = 0; $i < sizeof($products); $i++){
                 $counts[$i] = preg_replace( '/[^0-9]/', '', DB::table('product_user') -> where('product_id', $products[$i]->id) -> where('user_id', auth()->user()->id)->get('count'));

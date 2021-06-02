@@ -22,14 +22,7 @@ Route::get('/accessories', function () {
     return view('accessories');
 });
 Route::get('/basket', '\App\Http\Controllers\BasketController@view');
-Route::get('/checkout', function () {
-    $products= auth()->user() -> products;
-    $counts = [];
-    for ($i = 0; $i < sizeof($products); $i++){
-        $counts[$i] = preg_replace( '/[^0-9]/', '', DB::table('product_user') -> where('product_id', $products[$i]->id)->get('count'));
-    }
-    return view('checkout', ['products' => $products, 'counts' => $counts]);
-});
+Route::get('/checkout', '\App\Http\Controllers\CheckoutController@view');
 Route::get('/contact', function () {
     return view('contact');
 });

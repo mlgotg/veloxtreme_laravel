@@ -11,10 +11,25 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use function PHPUnit\Framework\isNull;
 
 class CheckoutController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function view(){
+        $products= auth()->user() ->products;
+        if(!isset($products[0])){
+            return view('main');
+        }
+        $counts = [];
+        for ($i = 0; $i < sizeof($products); $i++){
+            $counts[$i] = preg_replace( '/[^0-9]/', '', DB::table('product_user')
+                -> where('product_id', $products[$i]->id)
+                -> where('user_id', auth()->user()->id)
+                ->get('count'));
+        }
+        return view('checkout', ['products' => $products, 'counts' => $counts]);
+    }
     public function write(Request $request){
         $validation = $request->validate([
             'delivery_details_np' => Rule::requiredIf($request->input('delivery_type') == 'Нова пошта'),
@@ -46,11 +61,16 @@ class CheckoutController extends BaseController
         $order->comment = $request->input('comment');
         $order -> save();
         foreach (auth()->user()->products as $p){
-            DB::insert( 'insert into product_order (product_id, order_id) values (?, ?)', [$p->id, $order->id]);
+            DB::insert( 'insert into product_order (product_id, order_id, count) values (?, ?, ?)',
+                [$p->id, $order->id, preg_replace( '/[^0-9]/', '', DB::table('product_user')
+                    -> where('product_id', $p->id)
+                    -> where('user_id', auth()->user()->id)
+                    ->get('count'))
+            ]);
         }
         //$order->products = auth()->user()->products;
         DB::delete('delete from product_user where user_id = :user_id', ['user_id' => auth()->user()->id]);
-        return view('submit');
+        return view('submit', ['message' => "Ваш заказ прийнято"]);
     }
 
 }
